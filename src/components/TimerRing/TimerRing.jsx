@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { TaskMateContext } from '../../store/taskMate-context';
 
-const TimerRing = ({formatTime, duration, timeLeft, mode,}) => {
+const TimerRing = () => {
 
+const {formatTime, duration, timeLeft, mode} = useContext(TaskMateContext)
 const radius = 90;
 const circumference = 2 * Math.PI * radius;
 const safeDuration = duration > 0 ? duration : 100; 

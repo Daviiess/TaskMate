@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import AnalyticsPanel from './components/AnalyticsPanel/AnalyticsPanel'
 import TaskBoard from './components/TaskBoard/TaskBoard'
 import TimerPanel from './components/TimerPanel/TimerPanel'
 import "@fontsource/inter/400.css";
+  import { TaskMateContext } from './store/taskMate-context';
 const App = () => {
   const [tasks , setTasks] = useState([])
   const [timeLeft , setTimeLeft ] = useState(0);
   const [isRunning , setIsRunning] = useState(false);
   const [mode , setMode] = useState("");
-  const [duration , setDuration] = useState(1500)
+  const [duration , setDuration] = useState(1500);
+  const taskCtx = useContext(TaskMateContext);
   useEffect(() => {
     let timer;
     if(isRunning){
@@ -108,16 +110,29 @@ const App = () => {
      return prevTasks.filter(task => task.id !== id)
     })
   }
+  const ctxValue = {
+    tasks:tasks,
+    timeLeft,
+    isRunning,
+    mode:mode,
+    duration,
+    focusTask: focusTask,
+    onDelete: handleDelete,
+    onAddTask: handleNewTask,
+    handleTimerEnd: handleTimerEnd,
+    resetTimer: resetTimer,
+    formatTime: formatTime,
+    toggleTimer: toggleTimer,
+    switchModes: switchModes
+  }
   return (
+     <TaskMateContext value={ctxValue}>
    <div className='task-mate-grid'>
-    <TimerPanel onAddTask = {handleNewTask} tasks = {tasks} 
-    timeLeft = {timeLeft} isRunning = {isRunning} mode = {mode}
-    handleTimerEnd = {handleTimerEnd} resetTimer = {resetTimer}
-    formatTime = {formatTime} toggleTimer = {toggleTimer} switchModes = {switchModes} duration = {duration}
-    />
-     <TaskBoard tasks = {tasks} focusTask = {focusTask} onDelete = {handleDelete} mode = {mode} isRunning = {isRunning} timeLeft={timeLeft}/>
-   <AnalyticsPanel tasks={tasks}/> 
+    <TimerPanel />
+     <TaskBoard />
+   <AnalyticsPanel/> 
   </div>
+   </TaskMateContext>
   )
 }
 

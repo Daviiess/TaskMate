@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './AnalyticsPanel.scss';
 import { FaCheck } from "react-icons/fa";
 import Sessions from '../Sessions/sessions';
 import { FaX } from "react-icons/fa6";
+import { TaskMateContext } from '../../store/taskMate-context';
 
-const AnalyticsPanel = ({tasks}) => {
+const AnalyticsPanel = () => {
+  const {tasks} = useContext(TaskMateContext)
   const taskCompletedNo = tasks.filter(task => task.status === 'done').length;
   console.log(taskCompletedNo)
   const totalTasks = tasks.filter(task => task.status === 'todo').length;

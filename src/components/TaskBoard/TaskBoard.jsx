@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './TaskBoard.scss';
 import { CiSearch } from "react-icons/ci";
 import TaskCard from '../TaskCard/TaskCard';
 import EmptyTaskBoard from '../EmptyTaskBoard/EmptyTaskBoard';
-const TaskBoard = ({tasks , focusTask , onDelete, mode, isRunning,timeLeft }) => { //Remember to remove the onAddTask
-  
+import { TaskMateContext } from '../../store/taskMate-context';
+
+const TaskBoard = ({/* tasks , focusTask , onDelete, mode, isRunning,timeLeft  */}) => { //Remember to remove the onAddTask
+ const {tasks,timeLeft, isRunning,mode,  duration, focusTask,onDelete,} = useContext(TaskMateContext)
   return (
     <div className='task-board'>
       <div className="task-board__search">

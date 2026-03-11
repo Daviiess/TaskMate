@@ -1,10 +1,13 @@
-import React, { useRef , useState } from 'react'
+import React, { useContext, useRef , useState } from 'react'
 import { CiCirclePlus } from "react-icons/ci";
 import Modal from '../Modal/Modal';
 import './TimerPanel.scss'
 import TimerRing from '../TimerRing/TimerRing';
-const TimerPanel = ({onAddTask , tasks , timeLeft , isRunning,mode ,resetTimer, formatTime,
-   toggleTimer, switchModes, duration }) => {
+import { TaskMateContext } from '../../store/taskMate-context';
+const TimerPanel = ({/* onAddTask , tasks , timeLeft , isRunning,mode ,resetTimer, formatTime,
+   toggleTimer, switchModes, duration  */}) => {
+const {onAddTask , tasks , timeLeft , isRunning,mode
+,resetTimer, formatTime, toggleTimer, switchModes, duration} = useContext(TaskMateContext)
   const modal = useRef();
   const [inputValue , setInputValue] = useState('');
   function handleChange(event){
