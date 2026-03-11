@@ -1,0 +1,9 @@
+@use "../abstracts/variables" as *;
+.header{
+    text-align: center;
+    color:$primary-white-Text;
+    letter-spacing: -0.02em;
+    font-weight: 700;
+    font-size: 1.5rem;
+    display: block;
+}

@@ -1,0 +1,6 @@
+@use "../abstracts/variables" as *;
+body{
+    line-height: 1.7;
+    background-color: $primary-body-color;
+    padding: 3rem;
+}

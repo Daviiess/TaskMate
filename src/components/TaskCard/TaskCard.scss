@@ -1,0 +1,124 @@
+@use '../../styles/abstracts/variables' as *;
+
+.task-card {
+    height: 15rem;
+    margin-bottom: 3.5rem;
+    position: relative;
+    border-radius: 2rem;
+    perspective: 100rem; 
+    background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1); 
+  /* box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.37); */
+  &.todo-card.is-flipped {
+        .task-card__side--front {
+            transform: rotateY(-180deg);
+            cursor: pointer;
+        }
+        .task-card__side--back {
+            transform: rotateY(0);
+            cursor: pointer;
+        }
+    }
+
+    &__side {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 3rem 2rem;
+        backface-visibility: hidden; 
+        transition: transform 0.8s ease;
+        border-radius: 2rem;
+        display: flex;
+        
+        
+        &--front {
+            background-color: inherit; 
+            z-index: 2;
+            transform: rotateY(0);
+        }
+
+        &--back {
+            background-color: $primary-ToDo-box-color;
+            transform: rotateY(180deg); 
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            
+        }
+    }
+
+    &__text {
+        font-size: 1.65rem;
+        color: $primary-white-Text;
+        height: 6rem;
+        overflow-y: auto;
+        text-align: left;
+    }
+}
+
+
+.todo-card { 
+ /*    background-color: $primary-ToDo-box-color; */
+    box-shadow: 0 0 15px $primary-ToDo-box-color;  
+}
+.doing-card {
+    background-color: $primary-Doing-box-color;
+    box-shadow: 0 0 15px $primary-Doing-box-color; 
+}
+.done-card {
+    background-color: $primary-Done-box-color;
+    box-shadow: 0 0 15px $primary-Done-box-color; 
+}
+
+
+.task-card__btn, .task-card__action-btn{
+    cursor: pointer;
+    border: none;
+    border-radius: 1rem;
+    color: $primary-white-Text;
+    transition: all 0.2s ease-in;
+    &:hover { filter: brightness(1.5); }
+}
+
+.disallowed{
+    color: $color-red;
+}
+
+.task-card__btn {
+    position: absolute;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    padding: .9rem 1rem;
+    background: rgba(159, 158, 158, 0.1);
+}
+.task-card__btn-back{
+    background-color: transparent;
+    border: none;
+
+}
+.task-card__icons{
+    font-size: 2rem;
+    cursor: pointer;
+    &--trash{
+        color: $primary-trash-color;
+
+    }
+
+    &--edit{
+        color: $primary-edit-color;
+    }
+}
+/* .task-card__btn-back{
+    padding: 1.5rem;
+    border-radius: 2rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    .task-card__btn--delete{
+        
+    }
+} */

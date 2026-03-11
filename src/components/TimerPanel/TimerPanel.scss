@@ -1,0 +1,184 @@
+@use "/src/styles/abstracts/variables" as *;
+.timer-panel{
+       box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+       background-color: $primary-bg-color;
+       border-radius: 1.2rem;
+       backdrop-filter: blur(12px);
+       height: 80vh;
+       text-align: center;
+       position: relative;
+
+       &__title{
+        font-size: $h2-size;
+        text-align: center;
+        color: $primary-white-Text;
+        margin-top: 1rem;
+        margin-bottom: 3rem;
+       }
+
+       &__info{
+        color: $primary-green-text;
+        font-size: $green-font-size;
+        text-align: center;
+         animation: textGlow 1s ease-in-out infinite alternate;
+         margin-bottom: 3rem;
+       }
+       &__time-wrapper{
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        width: 30rem; 
+        height: 30rem; 
+        margin: 0 auto;
+        margin-bottom: 10rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(15px);
+        border: .5px solid rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+        
+       }
+      
+        &__display{
+            font-size: 7rem;
+            color:$primary-white-Text;
+            position: absolute;
+            position: absolute; /* This is the secret sauce */
+            z-index: 10;
+            margin: 0;
+            cursor: pointer;
+            transition: all .5s ease-in-out;
+            &:hover{
+              transform: scale(1.05);
+            }
+  
+        }
+       
+       &__action{
+
+         .timer-panel__button{
+            display: inline-block;
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            border: none;
+            color: white;
+            transition: all 0.3s ease-in-out;
+             &:hover{
+                cursor: pointer;
+            }
+            &:not(:last-child){
+                margin-right: 1.5rem;
+            }
+           
+            &-focus{
+                background-color: $primary-Start-btn-color;
+                  &:hover{
+                     box-shadow: 0 1rem 2rem rgba($primary-Start-btn-color, 0.15);
+                     transform: translateY(-2px);
+                }
+            }
+            &-short{
+                background-color: $primary-Short-break-btn-color;
+                
+                &:hover{
+                     box-shadow: 0 1rem 2rem rgba($primary-Short-break-btn-color, 0.15);
+                     transform: translateY(-2px);
+                }
+                
+            }
+            &-long{
+                background-color: $primary-Long-break-btn-color;
+                   &:hover{
+                     box-shadow: 0 1rem 2rem rgba($primary-Long-break-btn-color, 0.15);
+                     transform: translateY(-2px);
+                }
+            }
+           
+             &:active{
+                box-shadow: 0 .5rem 1rem rgba($color-black, 0.15);
+                transform: translateY(0px);
+            }
+       }
+       }
+      &__add-task{
+   
+        .plus-icon{
+          font-size: 1.3rem;
+          color: $primary-white-Text;
+          cursor: pointer;
+          padding: 1.3rem;
+          border: none;
+          background-color:$primary-Start-btn-color;
+          border-radius: 1rem;
+          border-bottom-right-radius:0 ;
+          border-top-right-radius:0 ;
+          transition: all 0.4s ease-in-out;
+          animation: buttonGlow 2s infinite ease-in-out alternate;
+          position: absolute;
+          bottom: 0;
+          right: 0;
+          
+        }
+        .plus-icon:hover{
+          box-shadow: 0 1rem 2rem rgba($primary-Long-break-btn-color, 0.15);
+          transform: translateY(-2px);
+        }
+        .plus-icon:active{
+          transform: translateY(0);
+        }
+      }
+      &__controls{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 2.5rem;
+        button{
+          padding: 1rem;
+          display: inline-block;
+          background-color: transparent;
+          border: 2px solid $primary-white-Text;
+          color: $primary-white-Text;
+          border-radius: 1rem;
+          cursor: pointer;
+           box-shadow: 0 0 10px 3px rgba($primary-white-Text, 0.15);
+           transition: all 0.4s ease-in-out;
+           letter-spacing: 1px;
+           text-transform: uppercase;
+           backdrop-filter: blur(12px);
+          &:hover{
+            transform: translateY(-2px) scale(1.05);
+
+          }
+          &:active{
+            transform: translateY(0);
+          }
+        }
+      }
+}
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px $primary-green-text;
+  }
+  to {
+    text-shadow: 0 0 20px $primary-green-text;
+  }
+}
+@keyframes borderGlow{
+    0%{
+        box-shadow: 0 0 10px 3px rgba($primary-Doing-box-color, 0.3);
+    }
+    100%{
+        box-shadow: 0  0 20px 10px rgba($primary-Doing-box-color, 0.3);
+    }
+}
+@keyframes buttonGlow{
+    0%{
+        box-shadow: 0 0 5px 1px rgba($primary-Doing-box-color, 0.3);
+    }
+    100%{
+        box-shadow: 0  0 5px 5px rgba($primary-Doing-box-color, 0.3);
+    }
+}

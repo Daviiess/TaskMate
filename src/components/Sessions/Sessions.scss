@@ -1,0 +1,59 @@
+@use '../../styles/abstracts/variables' as *;
+      .sessions-container{
+          
+           box-shadow: 0 0 15px $primary-ToDo-box-color; 
+           border-radius: 1rem;
+           padding: 3rem 1.5rem;
+            cursor: pointer;
+             &__flex{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+             }
+
+            &__left-side{
+                display: flex;
+                flex-direction: column;
+                color: $primary-white-Text;
+                font-weight: 400;
+                .sessions-container__span-1{
+                    font-size: 1.7rem;
+                }
+                .sessions-container__span-2{
+                    font-size: 2.5rem;
+                }
+            }
+            &__right-side{
+                box-shadow: 0 0 15px $color-black; 
+                padding: 1rem 1.7rem;
+                border-radius: .5rem;
+                &__text{
+                    color: $primary-green-text;
+                    font-size: 1.5rem;
+                    font-weight: 500;
+                }
+            }
+
+         /*    &__span{
+                font-size: 2rem;
+                
+            }
+            &total-sessions__number{
+                display: flex;
+                flex-direction: column;
+                font-size: 1.8rem;
+                color: $primary-white-Text;
+            }
+
+            &total-sessions__icon-holder{
+                 box-shadow: 0 0 15px $color-black;
+                 padding: 1rem 1.5rem; 
+                 border-radius: .5rem;
+            }
+            .total-sessions__icon{
+               font-size: 1.5rem;
+               color: $primary-Done-box-color;
+            } */ 
+        }
+        
+       

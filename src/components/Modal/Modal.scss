@@ -1,0 +1,71 @@
+@use '../../styles/abstracts/variables' as *;
+.modal-overlay{
+   position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $primary-bg-color;
+  z-index: 1000;
+  padding: 0 3rem 3.5rem;
+border: none;
+border-radius: .5rem;
+
+animation: slideup .4s ease-in-out ;
+&::backdrop{
+    background-color: rgba($color-black , .85);
+}
+}
+
+.modal-overlay h2{
+    color: $primary-white-Text;
+    font-size: 1.7rem;
+    text-align: center;
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+}
+.modal-overlay input {
+    padding: .5rem 1.5rem;
+    border-radius: .5rem;
+    font-weight: 400;
+    font-size: 1.5rem;
+    &:focus{
+        outline: none;
+        border: 2px solid $primary-ToDo-box-color;
+    }
+}
+
+
+
+
+.modal-overlay .modal-task-btn{
+    padding: .5rem;
+    margin-left: .5rem;
+    border-radius: .3rem;
+    cursor: pointer;
+    border: none;
+    color: $color-black;
+    background-color: $primary-white-Text;
+}
+.cancel-form{
+    margin-top: 2rem;
+    text-align: right;
+}
+.cancel-btn{
+    background-color: transparent;
+    color: $primary-white-Text;
+    display: inline-block;
+    padding: .3rem .6rem;
+    cursor: pointer;
+}
+@keyframes slideup{
+    0%{
+        opacity: 0;
+        transform: translate(-50% , -40%);
+    }
+
+    100%{
+        opacity: 1;
+     transform: translateY(-1px);
+      transform: translate(-50% , -50%);
+    }
+}
