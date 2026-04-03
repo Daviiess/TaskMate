@@ -11,6 +11,8 @@ const App = () => {
   const [mode , setMode] = useState("");
   const [duration , setDuration] = useState(1500);
   const taskCtx = useContext(TaskMateContext);
+
+  //UseEffect for the timer logic
   useEffect(() => {
     let timer;
     if(isRunning){
@@ -27,14 +29,17 @@ const App = () => {
     return () => clearInterval(timer); 
   } , [isRunning])
 
+
   function toggleTimer(){
     setIsRunning(prev => !prev);
   }
+
   function formatTime(){
     const mins = Math.floor(timeLeft / 60).toString().padStart(2 , '0');
     const secs = (timeLeft % 60).toString().padStart(2 , '0');
     return `${mins}:${secs}`;
   }
+
   function resetTimer(){
   setIsRunning(false);
   console.log('Timer reset')
@@ -49,6 +54,8 @@ const App = () => {
     setTimeLeft(300);
   }
   }
+
+
   function switchModes(modes){
     setIsRunning(false);
     setMode(modes)
@@ -67,6 +74,7 @@ const App = () => {
       setDuration(time)
     }
   }
+
   function handleTimerEnd(){
     setTasks(prevTasks => prevTasks.map((task) => 
       task.status === 'doing' ? {...task , status: 'done'} : task
@@ -111,10 +119,10 @@ const App = () => {
     })
   }
   const ctxValue = {
-    tasks:tasks,
+    tasks,
     timeLeft,
     isRunning,
-    mode:mode,
+    mode,
     duration,
     focusTask: focusTask,
     onDelete: handleDelete,
@@ -124,7 +132,7 @@ const App = () => {
     formatTime: formatTime,
     toggleTimer: toggleTimer,
     switchModes: switchModes
-  }
+  };
   return (
      <TaskMateContext value={ctxValue}>
    <div className='task-mate-grid'>
